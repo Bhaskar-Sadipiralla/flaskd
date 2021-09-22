@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: flask-deployment
+  namespace: flask
+spec:
+  selector:
+    matchLabels:
+      app: flask-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask-deployment
+    spec:
+      containers:
+      - name: flask-deployment
+        image:  741484487672.dkr.ecr.us-east-2.amazonaws.com/flask:latest
+        ports:
+        - containerPort: 5000
